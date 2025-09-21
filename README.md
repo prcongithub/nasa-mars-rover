@@ -39,12 +39,21 @@ cd mars-rover-gallery
 npm install
 ```
 
-3. Start the development server:
+3. Set up environment variables:
+```bash
+# Copy the example environment file
+cp .env.example .env.local
+
+# Edit .env.local and add your NASA API key (optional)
+# VITE_NASA_API_KEY=your_api_key_here
+```
+
+4. Start the development server:
 ```bash
 npm run dev
 ```
 
-4. Open your browser and navigate to the provided local URL (usually http://localhost:5173)
+5. Open your browser and navigate to the provided local URL (usually http://localhost:5173)
 
 ### Building for Production
 
@@ -72,10 +81,33 @@ The app is currently running on port 3333. You can access it at:
 
 ## API Configuration
 
-The app currently uses NASA's DEMO_KEY for the API. For production use, you should:
+### NASA API Key Setup
 
-1. Get your own API key from [NASA API Portal](https://api.nasa.gov/)
-2. Update the `NASA_API_KEY` in `src/services/nasa-api.ts`
+The app uses NASA's Mars Rover Photos API. By default, it uses the `DEMO_KEY` which has rate limits.
+
+#### For Development:
+1. **Use DEMO_KEY** (default) - 1000 requests per hour
+2. **Get your own key** (recommended):
+   - Visit [NASA API Portal](https://api.nasa.gov/)
+   - Sign up for a free API key
+   - Add it to your `.env.local` file:
+   ```bash
+   VITE_NASA_API_KEY=your_actual_api_key_here
+   ```
+
+#### For Production Deployment:
+Add the environment variable to your hosting platform:
+
+**Vercel:**
+- Dashboard → Project Settings → Environment Variables
+- Add: `VITE_NASA_API_KEY` = `your_api_key`
+
+**Netlify:**
+- Site Settings → Environment Variables  
+- Add: `VITE_NASA_API_KEY` = `your_api_key`
+
+**GitHub Pages:**
+- Not recommended for API keys (static hosting)
 
 ## Usage
 

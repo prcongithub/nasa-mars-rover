@@ -1,3 +1,6 @@
+const NASA_API_KEY = import.meta.env.VITE_NASA_API_KEY || 'DEMO_KEY';
+const BASE_URL = 'https://api.nasa.gov/mars-photos/api/v1';
+
 export interface RoverPhoto {
   id: number;
   sol: number;
